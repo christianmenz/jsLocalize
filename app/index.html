@@ -30,7 +30,7 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="header">
       <ul class="nav nav-pills pull-right">
         <li class="active"><a href="#">Home</a></li>
@@ -44,19 +44,27 @@
     ngf-multiple="true">
       <h1>jsLocalize</h1>
       <p class="lead">Simple online tool to manage your translation files.</p>
-      <div class="btn btn-lg btn-success" ngf-change="appCtrl.addFiles($files)" ngf-select ngf-multiple="true">Add file</div>
+      <div class="btn btn-lg btn-success" ngf-change="appCtrl.addFiles($files)" ngf-select ngf-multiple="true">Add files</div>
+      <div ng-if="appCtrl.keys.length > 0" class="btn btn-lg btn-primary" ng-click="appCtrl.downloadFiles()">Download files (.zip)</div>
     </div>
 
     <div class="row ">
       <div class="col-lg-12">
-        {{appCtrl.dataSet}}
-        <table class="table table-hover">
-          <tr ng-repeat="(key, value)  in appCtrl.dataSet">
+        <table class="table table-hover" ng-if="appCtrl.keys.length > 0">
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th ng-repeat="(fileName, object) in appCtrl.files">
+                {{fileName}}
+              </th>
+            </tr>
+          </thead>
+          <tr ng-repeat="key in appCtrl.keys">
             <td>
               {{key}}
             </td>
-            <td ng-repeat="(file,value) in value">
-              {{value}}
+            <td ng-repeat="(fileName, object) in appCtrl.files">
+              <input type="text" ng-model="object[key]" />
             </td>
           </tr>
         </table>
@@ -84,6 +92,8 @@
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
   <script src="/bower_components/lodash/lodash.js"></script>
+  <script src="/bower_components/jszip/dist/jszip.js"></script>
+  <script src="/bower_components/file-saver.js/FileSaver.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
