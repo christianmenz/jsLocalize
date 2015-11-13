@@ -73,7 +73,7 @@
               {{key}}
             </td>
             <td ng-repeat="(fileName, object) in appCtrl.files">
-              <input type="text" ng-model="object[key]" />
+              <input type="text" ng-model="object[key]" required />
             </td>
           </tr>
         </table>
