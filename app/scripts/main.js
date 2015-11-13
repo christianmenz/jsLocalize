@@ -1,8 +1,13 @@
 
-angular.module('jsLocalize', []);
+angular.module('jsLocalize', ['ngFileUpload', 'ui.router']);
 
+// Config
+angular.module('jsLocalize').config(function($stateProvider, $urlRouterProvider) {
+  
+});
 
-angular.module('jsLocalize', ['ngFileUpload']).controller('AppCtrl', [function (NgTableParams) {
+// Main Controller
+angular.module('jsLocalize').controller('AppCtrl', [function () {
   var that = this;
 
   this.files = {}; // keep track of the names and the original object
