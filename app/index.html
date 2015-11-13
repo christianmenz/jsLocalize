@@ -53,6 +53,7 @@
       <h1>jsLocalize</h1>
       <p class="lead">Simple online tool to manage your translation files.</p>
       <div class="btn btn-lg btn-success" ngf-change="appCtrl.addFiles($files)" ngf-select ngf-multiple="true">Add files</div>
+      <div ng-if="appCtrl.keys.length == 0"  class="btn btn-lg btn-primary" ng-click="appCtrl.loadSampleData()">Load sample JSON</div>
       <div ng-if="appCtrl.keys.length > 0" ng-cloak class="btn btn-lg btn-primary" ng-click="appCtrl.downloadFiles()">Download files (.zip)</div>
     </div>
 
