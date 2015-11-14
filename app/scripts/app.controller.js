@@ -7,8 +7,25 @@
 		this.keys = []; // just all they keys
 		this.downloadFiles = downloadFiles;
 		this.addFiles = addFiles;
+		this.loadSampleData = loadSampleData;
    
 		//////
+		
+		function loadSampleData() {
+			that.keys = ['key1', 'key2'];
+			that.files = {
+				'en.json': {
+					'key1' : 'Some text',
+					'key2' : 'Another text'					
+				},
+				'de.json': {
+					'key1' : 'Ein Text',
+				},
+				'fr.json': {
+					'key1' : 'Un texte',
+				}
+			}
+		}
   
 		function downloadFiles() {
 			var zip = new JSZip();
