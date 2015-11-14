@@ -1,0 +1,30 @@
+<div class="jumbotron" " ngf-drop ngf-change="appCtrl.addFiles($files) " ngf-multiple="true ">
+      <h1>jsLocalize</h1>
+      <p class="lead ">Simple online tool to manage your translation files.</p>
+      <div class="btn btn-lg btn-success " ngf-change="appCtrl.addFiles($files) " ngf-select ngf-multiple="true ">Add files</div>
+      <div ng-if="appCtrl.keys.length==0 "  class="btn btn-lg btn-primary " ng-click="appCtrl.loadSampleData() ">Load sample JSON</div>
+      <div ng-if="appCtrl.keys.length> 0" ng-cloak class="btn btn-lg btn-primary" ng-click="appCtrl.downloadFiles()">Download files (.zip)</div>
+</div>
+
+<div class="row" ng-cloak>
+	<div class="col-lg-12">
+		<table class="table table-hover" ng-if="appCtrl.keys.length > 0">
+			<thead>
+				<tr>
+					<th>Key</th>
+					<th ng-repeat="(fileName, object) in appCtrl.files">
+						{{fileName}}
+					</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="key in appCtrl.keys">
+				<td>
+					{{key}}
+				</td>
+				<td ng-repeat="(fileName, object) in appCtrl.files">
+					<input type="text" ng-model="object[key]" required />
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -33,7 +33,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="jsLocalize" ng-controller="AppCtrl as appCtrl">
+<body ng-app="jsLocalize">
   <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -41,44 +41,13 @@
   <div class="container-fluid">
     <div class="header">
       <ul class="nav nav-pills pull-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li ui-sref-active="active"><a ui-sref="app">Home</a></li>
+        <li ui-sref-active="active"><a ui-sref="about">About</a></li>
       </ul>
       <h3 class="text-muted">jsLocalize</h3>
     </div>
-
-    <div class="jumbotron"" ngf-drop ngf-change="appCtrl.addFiles($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
-    ngf-multiple="true">
-      <h1>jsLocalize</h1>
-      <p class="lead">Simple online tool to manage your translation files.</p>
-      <div class="btn btn-lg btn-success" ngf-change="appCtrl.addFiles($files)" ngf-select ngf-multiple="true">Add files</div>
-      <div ng-if="appCtrl.keys.length == 0"  class="btn btn-lg btn-primary" ng-click="appCtrl.loadSampleData()">Load sample JSON</div>
-      <div ng-if="appCtrl.keys.length > 0" ng-cloak class="btn btn-lg btn-primary" ng-click="appCtrl.downloadFiles()">Download files (.zip)</div>
-    </div>
-
-    <div class="row" ng-cloak>
-      <div class="col-lg-12">
-        <table class="table table-hover" ng-if="appCtrl.keys.length > 0">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th ng-repeat="(fileName, object) in appCtrl.files">
-                {{fileName}}
-              </th>
-            </tr>
-          </thead>
-          <tr ng-repeat="key in appCtrl.keys">
-            <td>
-              {{key}}
-            </td>
-            <td ng-repeat="(fileName, object) in appCtrl.files">
-              <input type="text" ng-model="object[key]" required />
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    
+    <ui-view></ui-view>
 
     <div class="footer">
       <p>crafted with ♥</p>
@@ -123,7 +92,9 @@
   <!-- endbuild -->
 
   <!-- build:js scripts/main.js -->
-  <script src="scripts/main.js"></script>
+  <script src="scripts/jsLocalize.module.js"></script>
+  <script src="scripts/jsLocalize.config.js"></script>
+  <script src="scripts/app.controller.js"></script>
   <!-- endbuild -->
 </body>
 
