@@ -2,6 +2,10 @@
   border: 1px solid red;  
 }
 
+.dragover {
+   box-shadow: 0 0 3px 2px #777;
+}
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
