@@ -1,6 +1,7 @@
+/* global angular */
 (function () {
+        'use strict';
         angular.module('jsLocalize').config(function ($stateProvider, $urlRouterProvider) {
-
                 $urlRouterProvider.otherwise('/app');
 
                 $stateProvider.state('app', {
