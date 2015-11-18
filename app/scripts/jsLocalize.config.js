@@ -1,7 +1,7 @@
 /* global angular */
 (function () {
         'use strict';
-        angular.module('jsLocalize').config(function ($stateProvider, $urlRouterProvider) {
+        angular.module('jsLocalize').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
                 $urlRouterProvider.otherwise('/app');
 
                 $stateProvider.state('app', {
@@ -12,5 +12,5 @@
                         url: '/about',
                         templateUrl: 'views/partial-about.html'
                 });
-        });
+        }]);
 })();

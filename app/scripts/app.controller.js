@@ -3,7 +3,7 @@
 (function () {
 	'use strict';
 
-	angular.module('jsLocalize').controller('AppCtrl', [function ($rootScope) {
+	angular.module('jsLocalize').controller('AppCtrl', ['$rootScope', function ($rootScope) {
 		var that = this;
 
 		this.files = {}; // keep track of the names and the original object
