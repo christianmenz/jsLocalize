@@ -2,6 +2,10 @@
   border: 1px solid red;  
 }
 
+.translation-field {
+  width: 100%;
+}
+
 .dragover {
    box-shadow: 0 0 3px 2px #777;
 }
