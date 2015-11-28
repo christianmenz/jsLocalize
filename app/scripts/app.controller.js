@@ -9,6 +9,7 @@
 		this.files = {}; // keep track of the names and the original object
 		this.keys = []; // just all they keys
 		this.downloadFiles = downloadFiles;
+		this.downloadFile = downloadFile;
 		this.addFiles = addFiles;
 		this.loadSampleData = loadSampleData;
 
@@ -32,12 +33,19 @@
 
 		function downloadFiles() {
 			var zip = new JSZip();
-			_.forOwn(this.files, function (object, fileName) {
-				zip.file(fileName, JSON.stringify(object, null, '\t'));
+			_.forOwn(this.files, function (object, filename) {
+				zip.file(filename, JSON.stringify(object, null, '\t'));
 			});
 
-			var content = zip.generate({ type: 'blob' });
-			saveAs(content, 'jsLocalize.zip');
+			var blob = zip.generate({ type: 'blob' });
+			saveAs(blob, 'jsLocalize.zip');
+		}
+		
+		function downloadFile(filename, object) {
+			var content, blob;
+			content = JSON.stringify(object, null, '\t');
+			blob = new Blob([content], {type: "text/plain;charset=utf-8"});
+			saveAs(blob, filename);			
 		}
 
 		function addFiles($files) {

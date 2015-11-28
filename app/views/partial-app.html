@@ -17,8 +17,8 @@
 			<thead>
 				<tr>
 					<th>Key</th>
-					<th ng-repeat="(fileName, object) in appCtrl.files">
-						{{fileName}}
+					<th ng-repeat="(filename, object) in appCtrl.files">
+						<a ng-click="appCtrl.downloadFile(filename, object)" href="#">{{filename}}</a>
 					</th>
 				</tr>
 			</thead>
@@ -26,7 +26,7 @@
 				<td>
 					{{key}}
 				</td>
-				<td ng-repeat="(fileName, object) in appCtrl.files">
+				<td ng-repeat="(filename, object) in appCtrl.files">
 					<input type="text" ng-model="object[key]" required />
 				</td>
 			</tr>
